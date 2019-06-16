@@ -146,16 +146,14 @@ void VideoProcessing::averagingFrames()
 
 
 // Open the video stream
-bool VideoProcessing::openVideo(const std::string& filePath)
-{
-    if (!m_videoCapture.open(filePath))
-    {
+bool VideoProcessing::openVideo(const std::string& filePath) {
+    if (!m_videoCapture.open(filePath)) {
         std::cout << "Cannot open the video" << std::endl;
-    }
-    else
-    {
-        int frameCount = m_videoCapture.get(CV_CAP_PROP_FRAME_COUNT);   
+        return false;
+    } else {
+        int frameCount = m_videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
         std::cout << "Video " << m_fileName << " successfully opened. " << frameCount << " frames loadable." << std::endl;
+        return true;
     }
 }
 
@@ -168,14 +166,13 @@ void VideoProcessing::closeVideo()
 
 
 // Jump to a certain frame number
-bool VideoProcessing::jumpToFrame(int pos)
-{
-    for (int idx = 0; idx < pos; ++idx)
-    {
+bool VideoProcessing::jumpToFrame(int pos) {
+    for (int idx = 0; idx < pos; ++idx) {
         m_videoCapture.grab();
     }
 
     std::cout << "jumped to " << m_videoCapture.get(CV_CAP_PROP_POS_FRAMES) << std::endl;
+    return true;
 }
 
 
