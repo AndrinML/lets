@@ -1,5 +1,24 @@
 // Align two (consecutive) frames to stabilize video
 // Using the feature based mapping method
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#include <string>
+#include <iostream>
+
+namespace {
+    bool createDir(const std::string path) {
+        const mode_t mode = 0777;
+        if (mkdir(path.c_str(), mode) != 0) {
+            std::cout << "new directory created: " << path << std::endl;
+            return true;
+        } else {
+            std::cout << "could not create directory: " << path << std::endl;
+            return false;
+        }
+    }
+}
+
 void VideoFrame::alignFrameByFeatureBasedMorphing(const VideoFrame& referenceFrame, std::vector<int>& bestFeatures, int k)
 {
 
@@ -70,7 +89,9 @@ void VideoFrame::alignFrameByFeatureBasedMorphing(const VideoFrame& referenceFra
     }
 
     // STORE THE RESULT
-    cv::imwrite("../images/raw/debugging.jpg", imgOut);
+    if (createDir("/tmp/vidstab/images/raw/")) return;
+
+    cv::imwrite("/tmp/vidstab/images/raw/debugging.jpg", imgOut);
     drawMotionVec(m_frameData, referenceFrame, bestFeatures, k, false);
 }
 

@@ -7,6 +7,7 @@
 #include <opencv2/imgproc.hpp>
 #include "Drawing.hpp"
 
+static const std::string kDstFolder = "/tmp/";
 
 // Show keypoints
 void Drawing::showKeypoints(const cv::Mat& img, const std::vector<cv::Point2f>& keypoints)
@@ -71,8 +72,8 @@ void Drawing::showImg32f(cv::Mat& img)
 // Save image
 void Drawing::saveImg(const cv::Mat& img, const std::string fileName)
 {
-    cv::imwrite("../images/" + fileName + ".jpg", img);
-    std::cout << "../images/" + fileName << ".jpg" << " successfully saved..." << std::endl;
+    cv::imwrite(kDstFolder + "/vidstab/images/" + fileName + ".jpg", img);
+    std::cout << kDstFolder + "vidstab/images/" + fileName << ".jpg" << " successfully saved..." << std::endl;
 }
 
 

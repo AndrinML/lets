@@ -147,6 +147,7 @@ void VideoProcessing::averagingFrames()
 
 // Open the video stream
 bool VideoProcessing::openVideo(const std::string& filePath) {
+    std::cout << "::openVideo file: " << filePath << std::endl;
     if (!m_videoCapture.open(filePath)) {
         std::cout << "Cannot open the video" << std::endl;
         return false;
@@ -177,25 +178,24 @@ bool VideoProcessing::jumpToFrame(int pos) {
 
 
 // MAIN
-int main (int argc, char** argv)
-{
+int main (int argc, char** argv) {
     std::string file;
     std::string fileName;
     std::string fileType;
 
-    if (argc > 1)
-    {
+    if (argc > 1) {
         file = argv[1];
         fileName = file.substr(0, file.size() - 4);
         fileType = file.substr(file.size() - 4, file.size());
-    }
-    else
-    {
+
+        std::cout << "open file: " << fileName << std::endl;
+        std::cout << "file type: " << fileType << std::endl;
+    } else {
         fileName = "mini_waterfall";
         fileType = ".avi";
     }
-    
-    VideoProcessing VidProc("../videos/non_stabilized_samples/" + fileName + fileType, fileName);
+
+    VideoProcessing VidProc(fileName + fileType, fileName);
 
     return 0;
 }
