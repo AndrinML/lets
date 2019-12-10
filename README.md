@@ -11,4 +11,4 @@
 3. cmake .. && make -j4
 
 ## How to make a long exposure time image from a video?
-
+./VideoProcessing <path-to-video-file>
