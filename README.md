@@ -13,6 +13,6 @@
 ## How to make a long exposure time image from a video?
 ./VideoProcessing `<path-to-video-file>`
 
-## Result
+## Example result
 ![](results/polybahn4_big_avg.jpg)
 Image depicts the result of a 120 frames long video.
