@@ -1,4 +1,4 @@
-# lets - A long exposure time simulation library
+# lets - Long exposure time simulation
 
 ## Requirements
 
