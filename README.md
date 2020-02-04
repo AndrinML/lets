@@ -1,4 +1,5 @@
 # lets - Long exposure time simulation
+Bachelor Thesis @https://www.cvg.ethz.ch/
 
 ## Requirements
 
