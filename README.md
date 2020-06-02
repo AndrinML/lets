@@ -1,4 +1,5 @@
-# lets - A long exposure time simulation library
+# lets - Long exposure time simulation
+Bachelor Thesis @CVG https://www.cvg.ethz.ch/
 
 ## Requirements
 
@@ -11,8 +12,8 @@
 3. cmake .. && make -j4
 
 ## How to make a long exposure time image from a video?
-./VideoProcessing <path-to-video-file>
+./VideoProcessing `<path-to-video-file>`
 
-## Result
+## Example result
 ![](results/polybahn4_big_avg.jpg)
 Image depicts the result of a 120 frames long video.
