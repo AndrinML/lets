@@ -18,6 +18,7 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 # endif()
 
 add_executable( VideoProcessing
+  ${SRC_DIR}video_processing_main.cc
   ${SRC_DIR}VideoProcessing.cpp
   ${SRC_DIR}FeatureTracking.cpp
   ${SRC_DIR}VideoStabilizing.cpp

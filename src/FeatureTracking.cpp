@@ -48,7 +48,7 @@ int FeatureTracking::computeGoodFeatures(VideoFrame& vidFrame)
 
     // Convert frame to grayscale image
     cv::Mat greyScaleFrameData;
-    cv::cvtColor(vidFrame.getFrameData(), greyScaleFrameData, CV_RGB2GRAY);
+    cv::cvtColor(vidFrame.getFrameData(), greyScaleFrameData, cv::COLOR_RGB2GRAY);
 
     // Constant number of subdomains
     int xStep = 4;
@@ -143,7 +143,7 @@ int FeatureTracking::refineGoodFeatures(VideoFrame& vidFrame, std::vector<int>& 
     std::cout << "range: x: " << range[0] << " - " << range[1] << ", y: " << range[2] << " - " << range[3] << std::endl;
     // Convert frame to grayscale image
     cv::Mat greyScaleFrameData;
-    cv::cvtColor(vidFrame.getFrameData32f(), greyScaleFrameData, CV_RGB2GRAY);
+    cv::cvtColor(vidFrame.getFrameData32f(), greyScaleFrameData, cv::COLOR_RGB2GRAY);
  
     // @range: minX = range[0], maxX = range[1], minY = range[2], maxY = range[3]
     cv::Mat mask = cv::Mat::zeros(greyScaleFrameData.size(), CV_8UC1);
@@ -185,7 +185,7 @@ void FeatureTracking::initialMotion(VideoFrame& refFrame, cv::VideoCapture& vidC
         // Copy computed keypoints into the 'global' keypoints container
         //keypoints[i] = nextFrame.getKeypoints();
         
-        std::cout << "optical flow between frames " << (vidCapt.get(CV_CAP_PROP_POS_FRAMES) - 1) << " and " << vidCapt.get(CV_CAP_PROP_POS_FRAMES) << " calculated" << std::endl;
+        std::cout << "optical flow between frames " << (vidCapt.get(cv::CAP_PROP_POS_FRAMES) - 1) << " and " << vidCapt.get(cv::CAP_PROP_POS_FRAMES) << " calculated" << std::endl;
 
     }
 
@@ -224,7 +224,7 @@ void FeatureTracking::refinedMotion(VideoFrame& refFrame, cv::VideoCapture& vidC
         // Copy computed keypoints into the 'global' keypoints container
         keypoints[i] = nextFrame.getKeypoints();
 
-        std::cout << "optical flow between frames " << (vidCapt.get(CV_CAP_PROP_POS_FRAMES) - 1) << " and " << vidCapt.get(CV_CAP_PROP_POS_FRAMES) << " calculated" << std::endl;
+        std::cout << "optical flow between frames " << (vidCapt.get(cv::CAP_PROP_POS_FRAMES) - 1) << " and " << vidCapt.get(cv::CAP_PROP_POS_FRAMES) << " calculated" << std::endl;
     }
 
     // Find best features based on the cummulated errors in the last frame

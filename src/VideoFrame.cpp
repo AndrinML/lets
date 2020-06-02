@@ -53,8 +53,8 @@ void VideoFrame::calcOpticalFlow(VideoFrame& nextFrame)
 
     // Convert both frames to grayscale images
     cv::Mat prevImg, nextImg;
-    cv::cvtColor(m_frameData, prevImg, CV_RGB2GRAY);
-    cv::cvtColor(nextFrame.m_frameData, nextImg, CV_RGB2GRAY);
+    cv::cvtColor(m_frameData, prevImg, cv::COLOR_RGB2GRAY);
+    cv::cvtColor(nextFrame.m_frameData, nextImg, cv::COLOR_RGB2GRAY);
 
     // Calculate optical flow using interative Lucas-Kanade method
     cv::calcOpticalFlowPyrLK(prevImg, nextImg, m_keypoints, nextFrame.m_keypoints, nextFrame.m_status, m_error);

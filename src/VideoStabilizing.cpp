@@ -28,7 +28,7 @@ void VideoStabilizing::stabilizeUsingMorphing(VideoFrame& refFrame, cv::VideoCap
     // Temporary placeholder
     VideoFrame nextFrame;
 
-    std::cout << "start stabilization with frame " << (vidCapt.get(CV_CAP_PROP_POS_FRAMES) + 1) << std::endl;
+    std::cout << "start stabilization with frame " << (vidCapt.get(cv::CAP_PROP_POS_FRAMES) + 1) << std::endl;
    
     // Iterate over all frames keypoints
     for (std::vector<std::vector<cv::Point2f> >::iterator it = (keypoints.begin()); it != keypoints.end(); ++it)
@@ -42,11 +42,11 @@ void VideoStabilizing::stabilizeUsingMorphing(VideoFrame& refFrame, cv::VideoCap
         //Drawing::showImg32f(nextFrame.getFrameData32f());
         
         std::ostringstream ostr;
-        ostr << "raw/frame" << vidCapt.get(CV_CAP_PROP_POS_FRAMES);
+        ostr << "raw/frame" << vidCapt.get(cv::CAP_PROP_POS_FRAMES);
 
         // For all frames align to reference frame (refFrame)
         nextFrame.alignFrameByFeatureBasedMorphing(refFrame.getKeypoints(), *it, bestFeatures);
-        std::cout << "frame " << vidCapt.get(CV_CAP_PROP_POS_FRAMES) << " succesfully warped" << std::endl;
+        std::cout << "frame " << vidCapt.get(cv::CAP_PROP_POS_FRAMES) << " succesfully warped" << std::endl;
    
         // FOR DEBUGGING PURPOSE ONLY
         Drawing::saveFeatureVecs(refFrame, nextFrame, *it, bestFeatures, ostr.str());
@@ -59,7 +59,7 @@ void VideoStabilizing::stabilizeUsingMorphing(VideoFrame& refFrame, cv::VideoCap
       
         // Sum up aligned frames to average it afterwards
         avgFrame += nextFrame.getAlignedFrameData32f();
-        std::cout << "cummulated frame " << vidCapt.get(CV_CAP_PROP_POS_FRAMES) << std::endl;
+        std::cout << "cummulated frame " << vidCapt.get(cv::CAP_PROP_POS_FRAMES) << std::endl;
     }
 
     std::cout << "feature based morphing done..." << std::endl;

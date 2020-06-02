@@ -67,7 +67,7 @@ void VideoProcessing::findFeatureMotion()
     // Initialize m_keypoints vector for all keypoints for all frames
     m_keypoints = std::vector<std::vector<cv::Point2f> >(m_numFrames);
     
-    int frameCount = m_videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
+    int frameCount = m_videoCapture.get(cv::CAP_PROP_FRAME_COUNT);
     m_startFrame = frameCount/2 - m_numFrames/2;
 
     // Jump to start frame index - 1
@@ -154,7 +154,7 @@ bool VideoProcessing::openVideo(const std::string& filePath) {
         std::cout << "Cannot open the video" << std::endl;
         return false;
     } else {
-        int frameCount = m_videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
+        int frameCount = m_videoCapture.get(cv::CAP_PROP_FRAME_COUNT);
         std::cout << "Video " << m_fileName << " successfully opened. " << frameCount << " frames loadable." << std::endl;
         return true;
     }
@@ -174,30 +174,30 @@ bool VideoProcessing::jumpToFrame(int pos) {
         m_videoCapture.grab();
     }
 
-    std::cout << "jumped to " << m_videoCapture.get(CV_CAP_PROP_POS_FRAMES) << std::endl;
+    std::cout << "jumped to " << m_videoCapture.get(cv::CAP_PROP_POS_FRAMES) << std::endl;
     return true;
 }
 
 
-// MAIN
-int main (int argc, char** argv) {
-    std::string file;
-    std::string fileName;
-    std::string fileType;
+// // MAIN
+// int main (int argc, char** argv) {
+//     std::string file;
+//     std::string fileName;
+//     std::string fileType;
 
-    if (argc > 1) {
-        file = argv[1];
-        fileName = file.substr(0, file.size() - 4);
-        fileType = file.substr(file.size() - 4, file.size());
+//     if (argc > 1) {
+//         file = argv[1];
+//         fileName = file.substr(0, file.size() - 4);
+//         fileType = file.substr(file.size() - 4, file.size());
 
-        std::cout << "open file: " << fileName << std::endl;
-        std::cout << "file type: " << fileType << std::endl;
-    } else {
-        fileName = "mini_waterfall";
-        fileType = ".avi";
-    }
+//         std::cout << "open file: " << fileName << std::endl;
+//         std::cout << "file type: " << fileType << std::endl;
+//     } else {
+//         fileName = "mini_waterfall";
+//         fileType = ".avi";
+//     }
 
-    VideoProcessing VidProc(fileName + fileType, fileName);
+//     VideoProcessing VidProc(fileName + fileType, fileName);
 
-    return 0;
-}
+//     return 0;
+// }

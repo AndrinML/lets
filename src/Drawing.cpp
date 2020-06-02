@@ -51,7 +51,7 @@ void Drawing::showMotionVecs(VideoFrame& refFrame, const std::vector<std::vector
 void Drawing::showImg(cv::Mat& img)
 {
     const std::string winname = "showImg";
-    cv::namedWindow(winname, CV_WINDOW_AUTOSIZE);
+    cv::namedWindow(winname, cv::WINDOW_AUTOSIZE);
     cv::imshow(winname, img);
     cv::waitKey(0);
 }
@@ -61,9 +61,9 @@ void Drawing::showImg(cv::Mat& img)
 void Drawing::showImg32f(cv::Mat& img)
 {
     // Shifting color range to 0..255
-    normalize(img, img, 0, 1, CV_MINMAX);
+    normalize(img, img, 0, 1, cv::NORM_MINMAX);
     const std::string winname = "showImg32f";
-    cv::namedWindow(winname, CV_WINDOW_AUTOSIZE);
+    cv::namedWindow(winname, cv::WINDOW_AUTOSIZE);
     cv::imshow(winname, img);
     cv::waitKey(0);
 }

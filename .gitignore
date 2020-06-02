@@ -1,6 +1,9 @@
 # cmake
 build/
 
+# bazel
+/bazel-*
+
 # vs code
 .vscode/
 
